@@ -37,7 +37,7 @@ model Contact {
   id           String @id @default(uuid())
   name         String
   phone_number String
-  group        Group  @relation(fields: [groupId], references: [id])
+  group        Group  @relation(fields: [groupId], references: [id], onDelete: Cascade)
   groupId      String
 
   @@map("contacts")

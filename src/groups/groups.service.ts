@@ -27,4 +27,19 @@ export class GroupsService {
 
     return newGroup.id;
   }
+
+  async findGroupsByUserId(userId: string) {
+    return this.prisma.group.findMany({
+      where: {
+        userId: userId,
+      }
+    });
+  }
+
+  async deleteGroup(id: string): Promise<string> {
+    await this.prisma.group.delete({
+      where: { id },
+    });
+    return 'Group deleted successfully';
+  }
 }
