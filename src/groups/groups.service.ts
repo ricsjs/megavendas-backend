@@ -32,6 +32,11 @@ export class GroupsService {
     return this.prisma.group.findMany({
       where: {
         userId: userId,
+      },
+      select: {
+        id: true,
+        name: true,
+        contacts: true,
       }
     });
   }
